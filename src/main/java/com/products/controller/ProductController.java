@@ -3,10 +3,12 @@ package com.products.controller;
 
 import com.products.payloads.ProductDto;
 import com.products.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class ProductController {
 
     //create a new product
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto product){
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto product){
         ProductDto product1 = productService.createProduct(product);
         return new ResponseEntity<>(product1, HttpStatus.OK);
     }
